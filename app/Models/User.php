@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -47,4 +48,23 @@ class User extends Authenticatable
     public function user_enrollments(){
         return $this->hasMany(UserEnrollment::class);
     }
+    public function answers() {
+        return $this->hasOne('App\Models\Answer');
+      }
+
+      public function topic() {
+        return $this->belongsToMany('App\Models\Topic','topic_user')
+          ->withPivot('amount','transaction_id','status')
+          ->withTimestamps();
+      }
+
+      public function is_admin() {
+        if (Auth::check()) {
+          if (Auth::user()->role == 'A') {
+            return true;
+          }
+          return false;
+        }
+        return false;
+      }
 }

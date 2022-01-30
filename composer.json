@@ -19,6 +19,7 @@
         "laravelcollective/html": "^6.2",
         "laravelium/sitemap": "^8.0",
         "livewire/livewire": "^2.8",
+        "maatwebsite/excel": "^3.1",
         "portwallet/php-sdk": "^1.0",
         "vimeo/laravel": "^5.6"
     },

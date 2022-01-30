@@ -11,12 +11,15 @@
 
 		@include('frontend.partials.topbar')
 
+
 		@include('frontend.partials.navbar')
+
     <!-- Header Top END ==== -->
 		</header>
     <!-- Content -->
 
 		@yield('content')
+        {{-- @include('frontend.content.mocktest') --}}
     <!-- Content END-->
 	<!-- Footer ==== -->
 

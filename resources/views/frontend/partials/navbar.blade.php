@@ -81,6 +81,11 @@
           <li class="add-mega-menu"><a href="{{route('all-blogs')}}">Blogs</a>
 
           </li>
+          <li class="add-mega-menu"><a href="{{route('training-calendar')}}">Calendar</a>
+
+          </li>
+        </li>
+
 
 
         </ul>

@@ -4,18 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Course;
-use App\Models\Quize;
 
 class Question extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
-    public function course(){
-        return $this->belongsTo(Course::class,'elearning_course_id');
-      }
-      public function quiz(){
-        return $this->belongsTo(Quize::class,'quiz_id');
-      }
+    public function options() {
+        return $this->hasMany('App\Models\Options', 'question_id', 'id');
+    }
+
+    public function correctOptionsCount() {
+        return $this->options()->where('correct', 1 )->count();
+    }
+
+    public function correctOptions() {
+       return  $this->options()->where('correct', 1)->get();
+    }
+
+    public function topic() {
+        return $this->hasOne('App\Models\Topic', 'id', 'topic_id');
+    }
+    public function course() {
+        return $this->hasOne('App\Models\Course', 'id', 'course_id');
+    }
 }

@@ -11,6 +11,8 @@ use App\Models\ClassroomInfo;
 use App\Models\User;
 use App\Models\CourseReview;
 use App\Models\ClassroomTrainer;
+use App\Models\Question;
+use App\Models\Topic;
 
 class FrontendController extends Controller
 {
@@ -64,6 +66,32 @@ class FrontendController extends Controller
 
     return back();
   }
+
+  public function mock_details_frontend($id,$slug)
+  {
+
+    //dd($slug);
+    $course_categories= CourseCategory::all();
+    $topics = Topic::all();
+    $questions = Question::all();
+    $main_categories= MainCategory::all();
+    $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();
+    $classroom_course = ClassroomCourse::find($id);
+
+    $courseReview=CourseReview::with('user')->where('classroomcourse_id',$id)->where('status','approve')->latest()->get();
+    $rating = CourseReview::where('classroomcourse_id',$id)->where('status','approve')->avg('rating');
+    $avgRating = number_format($rating,1);
+    $trainer=ClassroomTrainer::where('classroom_course_id',$id)->get();
+
+    return view('frontend.pages.quiz.index',compact('course_categories','topics','questions','main_categories','classroom_course_details','classroom_course','courseReview','avgRating','trainer'));
+  }
+
+  public function calendar(){
+    return view('backend.quiz.calendar');
+}
+
+
+
 
 
 }

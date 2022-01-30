@@ -14,7 +14,9 @@
           <img class="ttr-logo-desktop" alt="" src="{{ asset('images/gsda logo.png')}}" width="160" height="27">
         </a>
       </div>
+
     </div>
+
     <!--logo end -->
     <div class="ttr-header-menu">
       <!-- header left menu start -->

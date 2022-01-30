@@ -11,11 +11,12 @@ use App\Models\CourseOverview;
 use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\UserEnrollment;
-use Auth;
+
 use App\Models\CourseReview;
 use App\Models\Trainer;
 use App\Models\Timer;
-
+use App\Models\Topic;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -601,7 +602,46 @@ class CourseController extends Controller
          {
            return view ('paymentsuccess');
          }
-         
+
+
+
+         public function mock_details_frontend($id,$slug)
+  {
+
+    $course_categories= CourseCategory::all();
+    $main_categories= MainCategory::all();
+    //$course = Course::find($id);
+
+    $course_details= CourseOverview::where('course_id',$id)->get();
+    //$sections= Section::where('course_id',$id)->get();
+    //$lessons= Lesson::where('course_id',$id)->get();
+    $course= Course::with(['sections.lessons'])->where('id',$id)->first();
+    //dd($course['sections.lessons']);
+
+
+    $enrolled= UserEnrollment::where('user_id',Auth::id())->where('course_id',$id)->first();
+    $courseReview=CourseReview::with('user')->where('course_id',$id)->where('status','approve')->latest()->get();
+    $rating = CourseReview::where('course_id',$id)->where('status','approve')->avg('rating');
+    $avgRating = number_format($rating,1);
+    $trainer= Trainer::where('course_id',$id)->get();
+    $data=Lesson::where('course_id',$id)->sum('duration');
+    $timer=Timer::where('course_id',$id)->get();
+
+
+
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer','data','timer'));
+  }
+
+  public function quizCourse(){
+      $courses = Course::all();
+      return view('backend.quiz.course.index',compact('courses'));
+  }
+
+  public function quizView($id){
+      $topics = Topic::where('course_id',$id)->get();
+    // $courses = Course::findOrFail($id);
+    return view('backend.quiz.course.viewTopic',compact('topics'));
+  }
 
 
 
