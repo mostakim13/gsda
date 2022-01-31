@@ -45,6 +45,7 @@ use App\Http\Controllers\UserRequestCertificateController;
 use App\Http\Controllers\CouponController;
 
 use App\Http\Controllers\FlicardController;
+use App\Http\Controllers\MocktestController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionsController;
@@ -54,6 +55,7 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\TimerController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TopReportController;
+
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Topic;
@@ -477,6 +479,11 @@ Route::post('admin/QuestionsOptions/update/{id}',[QuestionsOptionsController::cl
 Route::get('admin/QuestionsOptions/show',[QuestionsOptionsController::class,'show'])->name('questionsOptions-show');
 Route::get('/QuestionsOptions-delete/{id}',[QuestionsOptionsController::class,'optionDelete']);
 
+Route::get('mock/category',[MocktestController::class,'mockCategory'])->name('mock-category');
+Route::get('view/category',[MocktestController::class,'viewCategory'])->name('view-category');
+Route::post('mock/category/store',[MocktestController::class,'addMock'])->name('add-mock');
+Route::get('/mock-delete/{mock_id}',[MocktestController::class,'delete']);
 
+Route::post('mock/category/update',[MocktestController::class,'mockUpdate'])->name('update-mock');
 Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('training-calendar');
 

@@ -20,7 +20,7 @@
                         <label for="">Select Course</label>
                         <select name="course_id" id="inputState" class="form-control select2-show-search">
                             @foreach ($courses as $course)
-                                <option selected value="{{ $course->id }}">{{ $course->course_title }}</option>
+                                <option selected value="{{ $course->id }}">{{ $course->mock_category }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Time</label>
-                        <input type="text" name="time" class="form-control" placeholder="0:00">
+                        <input type="text" name="timer" class="form-control" placeholder="0:00">
                     </div>
                     <input type="submit" name="submit" id="submit" class="btn btn-info" value="Create Course Topic" />
                 </form>
@@ -49,7 +49,7 @@
                                 <select class="form-control select2-show-search" data-placeholder="Select One" name="course_id">
                                   <option label="Choose one"></option>
                                   @foreach ($courses as $cat)
-                                  <option value="{{ $cat->id }}">{{ ucwords($cat->course_title) }}</option>
+                                  <option value="{{ $cat->id }}">{{ ucwords($cat->mock_category) }}</option>
                                   @endforeach
                                 </select>
                                 @error('course_id')

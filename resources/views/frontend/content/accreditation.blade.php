@@ -6,7 +6,7 @@
 
 
         <h2 class="title-head">Accreditation <span>Authority</span></h2>
-
+        <div class="geeks mt-4"></div>
 
       </div>
     </div>

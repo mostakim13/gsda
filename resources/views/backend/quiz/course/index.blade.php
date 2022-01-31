@@ -10,7 +10,7 @@
                 @foreach($courses as $course)
                     <div class="card">
                         <div class="card-body mb-2">
-                            <h5 class="card-title">{{$course->course_title}}</h5>
+                            <h5 class="card-title">{{$course->mock_category}}</h5>
 
                             <a href="{{ url('admin/course/view/'.$course->id) }}" class="inline_block btn btn-primary">Go
                                 To Topic</a>

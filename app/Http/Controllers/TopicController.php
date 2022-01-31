@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\mockTestCategory;
 use App\Models\Topic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class TopicController extends Controller
     public function create()
     {
 
-        $courses = Course::orderBy('course_title','ASC')->get();
+        $courses = mockTestCategory::orderBy('mock_category','ASC')->get();
         $topics = Topic::latest()->get();
         return view('backend.quiz.topics.create',compact('courses','topics'));
     }

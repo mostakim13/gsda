@@ -13,7 +13,7 @@ class Topic extends Model
         return $this->hasMany('App\Models\Question', 'topic_id', 'id');
     }
     public function course() {
-        return $this->belongsTo('App\Models\Course','course_id');
+        return $this->belongsTo('App\Models\mockTestCategory','course_id');
     }
 
 }

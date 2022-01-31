@@ -77,8 +77,8 @@
     if (mysqli_connect_errno()) {
         echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
     }
-    $times = $topic->id;
-    $fetchtime = "SELECT `timer` FROM `topics` WHERE id = '$times'";
+    $id = $topic->id;
+    $fetchtime = "SELECT `timer` FROM `topics` WHERE id = '$id'";
     $fetched = mysqli_query($con, $fetchtime);
     $time = mysqli_fetch_array($fetched, MYSQLI_ASSOC);
     $settime = $time['timer'];

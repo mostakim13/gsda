@@ -13,6 +13,7 @@ use App\Models\Lesson;
 use App\Models\UserEnrollment;
 
 use App\Models\CourseReview;
+use App\Models\mockTestCategory;
 use App\Models\Trainer;
 use App\Models\Timer;
 use App\Models\Topic;
@@ -633,7 +634,7 @@ class CourseController extends Controller
   }
 
   public function quizCourse(){
-      $courses = Course::all();
+      $courses = mockTestCategory::all();
       return view('backend.quiz.course.index',compact('courses'));
   }
 

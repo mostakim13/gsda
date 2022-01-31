@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12 heading-bx left">
         <h2 class="title-head">Blogs<span></span></h2>
-
+        <div class="geeks mt-4"></div>
       </div>
     </div>
     <div class="recent-news-carousel owl-carousel owl-btn-1 col-12 p-lr0">

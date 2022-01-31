@@ -29,13 +29,17 @@
                         <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul>
-
+                        <li class=""><a href="{{ route('mock-category') }}"
+                                class="list-group-item list-group-item-action bg-light">Mock Test Category</a>
+                        </li>
                         <li class=""><a href="{{ route('admin-topic') }}"
                                 class="list-group-item list-group-item-action bg-light">Create new quiz</a>
                         </li>
+
                         <li class=""><a href="{{ url('admin/course/topic') }}"
                                 class="list-group-item list-group-item-action bg-light">Course</a>
                         </li>
+
                         <li class=""><a href="{{ route('results.index') }}"
                                 class="list-group-item list-group-item-action bg-light">All Results</a>
                         </li>

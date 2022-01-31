@@ -1,15 +1,12 @@
 <div class="section-area section-sp2 popular-courses-bx">
+    
           <div class="container">
     <div class="row">
       <div class="col-md-12 heading-bx left">
-
-
-
-
         <h2 class="title-head">E-learning <span>Courses</span></h2>
-
-
+        <div class="geeks mt-4"></div>
       </div>
+
     </div>
     <div class="row">
 
