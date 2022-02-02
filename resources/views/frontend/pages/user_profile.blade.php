@@ -55,9 +55,7 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                 </li>
-                @php
-                    $result = App\Models\Result::where('user_id',Auth::id())->get();
-                @endphp
+        
                   <li><a class="nav-link"   href="/result/index/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Quiz History</li></a>
               <!--  <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>

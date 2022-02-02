@@ -17,7 +17,7 @@ class CreateTopicsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('course_id');
             $table->string('title')->nullable();
-            $table->string('time')->nullable();
+            $table->string('timer')->nullable();
             $table->timestamps();
         });
     }

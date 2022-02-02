@@ -21,7 +21,7 @@ class CreateMockTestCategoriesTable extends Migration
             $table->string('discount_price')->nullable();
             $table->string('description')->nullable();
             $table->string('exam_format')->nullable();
-            $table->unsignedInteger('instructor_id');
+            $table->unsignedInteger('instructor_id')->nullable();
 
             $table->timestamps();
         });
