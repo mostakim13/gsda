@@ -633,16 +633,7 @@ class CourseController extends Controller
     return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer','data','timer'));
   }
 
-  public function quizCourse(){
-      $courses = mockTestCategory::all();
-      return view('backend.quiz.course.index',compact('courses'));
-  }
 
-  public function quizView($id){
-      $topics = Topic::where('course_id',$id)->get();
-    // $courses = Course::findOrFail($id);
-    return view('backend.quiz.course.viewTopic',compact('topics'));
-  }
 
 
 

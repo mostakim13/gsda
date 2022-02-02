@@ -36,9 +36,6 @@
                                 class="list-group-item list-group-item-action bg-light">Create new quiz</a>
                         </li>
 
-                        <li class=""><a href="{{ url('admin/course/topic') }}"
-                                class="list-group-item list-group-item-action bg-light">Course</a>
-                        </li>
 
                         <li class=""><a href="{{ route('results.index') }}"
                                 class="list-group-item list-group-item-action bg-light">All Results</a>

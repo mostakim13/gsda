@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Intervention\Image\Facades\Image;
 use App\Models\mockTestCategory;
+use App\Models\Topic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,8 @@ class MocktestController extends Controller
 
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(917, 1000)->save('uploads/mocktest/' . $name_gen);
-        $save_url = 'uploads/mocktest/' . $name_gen;
+        Image::make($image)->resize(917, 1000)->save('storage/uploads/mocktest/' . $name_gen);
+        $save_url = 'storage/uploads/mocktest/' . $name_gen;
 
         $request->validate([
             'mock_category' => 'required',
@@ -63,8 +64,8 @@ class MocktestController extends Controller
 
         $image = $request->file('image');
         $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(917,1000)->save('uploads/mocktest/'.$name_gen);
-        $save_url = 'uploads/mocktest/'.$name_gen;
+        Image::make($image)->resize(917,1000)->save('storage/uploads/mocktest/'.$name_gen);
+        $save_url = 'storage/uploads/mocktest/'.$name_gen;
         mockTestCategory::findOrFail($id)->update([
             'image' => $save_url,
             'mock_category' => $request->mock_category,
@@ -103,4 +104,22 @@ class MocktestController extends Controller
         );
         return Redirect()->back()->with($notification);
     }
+
+    public function course_details_frontend($id)
+  {
+
+    $mocktest= mockTestCategory::findOrFail($id);
+    //dd($mocktest);
+
+    return view('frontend/pages/course_details_index',compact('mocktest'));
+  }
+
+  public function quizView($id){
+    $topics = Topic::where('course_id',$id)->get();
+
+
+  // $courses = Course::findOrFail($id);
+  return view('frontend.quiz.course.viewTopic',compact('topics'));
+}
+
 }

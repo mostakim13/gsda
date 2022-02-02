@@ -13,7 +13,7 @@
                             <h5 class="card-title">{{$topic->title}}</h5>
                             <h5 class="card-title">Time: {{$topic->timer}} minutes</h5>
 
-                            <a href="{{ url('admin/topic/view/'.$topic->id) }}" class="inline_block btn btn-primary">Go
+                            <a href="/topic/questions/view/{{ $topic->id }}" class="inline_block btn btn-primary">Go
                                 To Quiz</a>
                             @if(Auth::user())
                                 @if(Auth::user()->is_admin == '1')

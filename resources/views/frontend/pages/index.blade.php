@@ -20,6 +20,11 @@
   <!-- Classroom -->
   @include('frontend.content.classroom')
   <!-- Classroom -->
+
+  {{-- mocktest --}}
+@include('frontend.content.mocktest')
+
+
   <!--@include('frontend.content.training_without_exam')-->
   @include('frontend.content.accreditation')
 

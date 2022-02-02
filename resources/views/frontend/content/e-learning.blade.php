@@ -1,5 +1,5 @@
 <div class="section-area section-sp2 popular-courses-bx">
-    
+
           <div class="container">
     <div class="row">
       <div class="col-md-12 heading-bx left">

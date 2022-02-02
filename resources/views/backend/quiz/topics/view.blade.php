@@ -1,7 +1,23 @@
-@extends('admin.admin_master')
-
-@section('admin_dashboard_content')
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @include('frontend.partials.styles')
+    <title>Document</title>
+</head>
+<body>
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">Home</a></li>
+                <li>Mock Details</li>
+                <li>Topics</li>
+                <li>Questions</li>
+            </ul>
+        </div>
+    </div>
     <style>
         .fixme {
             background: #3d0896;
@@ -156,5 +172,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+    @include('frontend.partials.scripts')
+    <!-- contact area END -->
 
-@endsection
+</div>
+
+
+</body>
+</html>

@@ -1,6 +1,14 @@
-@extends('admin.admin_master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @include('frontend.partials.styles')
+    <title>Document</title>
+</head>
+<body>
 
-@section('admin_dashboard_content')
 
     <div class="d-flex" id="wrapper">
         <div class="container">
@@ -13,7 +21,7 @@
                                     <h3 class="page-title">All Results</h3>
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <table id="resultsTable" class="table table-bordered table-striped datatable">
+                                            <table class="table table-bordered table-striped datatable">
                                                 <thead>
                                                     <tr>
                                                         <th>User</th>
@@ -60,21 +68,7 @@
     </div>
     </div>
 
+@include('frontend.partials.scripts')
 
-    <script>
-        $(function(){
-          'use strict';
-
-          $('#resultsTable').DataTable({
-            responsive: true,
-            language: {
-              searchPlaceholder: 'Search...',
-              sSearch: '',
-              lengthMenu: '_MENU_ ',
-            }
-          });
-
-
-        });
-      </script>
-@endsection
+</body>
+</html>

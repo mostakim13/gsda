@@ -86,7 +86,7 @@
           <div class="course-detail-bx">
 
         @if($course->video_type==0)
-        
+
         <div class="preview-video-box">
               <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $course->preview_id }}" data-gall="myGallery">
                 <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
@@ -95,11 +95,11 @@
                 </div>
               </a>
               @if(count($course->sections) > 0)
-              
+
               @foreach($course->sections as $section)
               @if(count($section->lessons) > 0)
               @foreach($section->lessons as $lesson)
-              
+
               @if($lesson->preview==1)
               <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="myGallery"></a>
               @endif
@@ -119,19 +119,19 @@
             </a>
         </div>
         @endif
- 
-        
+
+
           {{-- <button class="video-play" data-video-id="o-Mh4UB7Kgc">Youtube Video</button>
           <button class="video-play" data-video-id="595181733" data-channel="vimeo">Vimeo Video</button> --}}
             @if($enrolled)
-           
+
               <div class="course-price">
 
               <a href="/home/course_details/view/{{$course->id}}/{{ $course->elearning_slug }}" class="btn">Already Enrolled</a>
-              
+
             </div>
             @else
-     
+
             <div class="course-price">
 
               <del>{{$course->regular_price}}৳</del>
@@ -586,7 +586,7 @@ window.onload = function () {
       seconds= "0"+ seconds ;
     }if(minutes < 10){
       minutes= "0"+ minutes ;
-    }  
+    }
   document.getElementById("quiz-time-left").innerHTML
     = "Time Left :"+minutes+"minutes"+seconds+"seconds";
     if(total_seconds <= 0){
@@ -644,7 +644,7 @@ myHour.setHours(myDate.getHours() + 1); //one hour from now
 data.push(myHour);
 localStorage.setItem('storedData', JSON.stringify(data))
 
-function checkExpiration (){ 
+function checkExpiration (){
     //check if past expiration date
         var values = JSON.parse(localStorage.getItem('storedData'));
     //check "my hour" index here
@@ -665,7 +665,7 @@ function checkExpiration (){
 @endforeach
 
 @push('scripts')
-    
+
 <script type="text/javascript">
   // Set the date we're counting down to
 
@@ -673,27 +673,27 @@ function checkExpiration (){
     var t = $('#time').val();
 
   var countDownDate = new Date(t).getTime();
-  
+
   // Update the count down every 1 second
   var x = setInterval(function() {
-  
+
     // Get today's date and time
     var now = new Date().getTime();
-      
+
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
-      
+
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
+
     // Output the result in an element with id="demo"
     document.getElementById("demo").innerHTML = days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ";
-      
-    // If the count down is over, write some text 
+
+    // If the count down is over, write some text
     if (distance < 0) {
       clearInterval(x);
       document.getElementById("demo").innerHTML = "EXPIRED";

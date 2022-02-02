@@ -26,6 +26,6 @@ class Question extends Model
         return $this->hasOne('App\Models\Topic', 'id', 'topic_id');
     }
     public function course() {
-        return $this->hasOne('App\Models\Course', 'id', 'course_id');
+        return $this->hasOne('App\Models\mockTestCategory', 'id', 'course_id');
     }
 }

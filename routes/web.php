@@ -438,12 +438,9 @@ Route::get('/category-delete/{cat_id}',[CategoryController::class,'delete']);
 
 
 
-
-
 //////////////////////=====================Quiz Route====================////////////////////////////
 
-Route::get('admin/course/topic',[CourseController::class,'quizCourse']);
-Route::get('admin/course/view/{id}', [CourseController::class,'quizView'])->name('course-view');
+Route::get('mocktest/topics/view/{id}', [MocktestController::class,'quizView'])->name('course-view');
 
 Route::get('/admin/subcategory/ajax/{cat_id}', [TopicController::class, 'getSubCat']);
 
@@ -454,7 +451,7 @@ Route::get('admin/topic/edit/{id}', [TopicController::class,'edit'])->name('topi
 Route::post('admin/topic/update', [TopicController::class,'update'])->name('topics-update');
 Route::get('admin/topic-delete/{id}',[TopicController::class,'delete']);
 
-Route::get('admin/topic/view/{id}', [TopicController::class,'view'])->name('topics-view');
+Route::get('topic/questions/view/{id}', [TopicController::class,'view'])->name('topics-view');
 
 
 Route::get('result/index',[ResultsController::class,'index'])->name('results.index');
@@ -462,7 +459,7 @@ Route::get('result/edit/{id}',[ResultsController::class,'edit'])->name('results.
 Route::get('result/show/{id}',[ResultsController::class,'show'])->name('results.show');
 Route::post('result/store',[ResultsController::class,'store'])->name('results.store');
 Route::post('result/update', [ResultController::class,'update'])->name('results.update');
-
+Route::get('result/index/{id}',[ResultsController::class,'result'])->name('result-index');
 
 
 Route::get('admin/question/index',[QuestionController::class,'index'])->name('questions-index');
@@ -486,4 +483,6 @@ Route::get('/mock-delete/{mock_id}',[MocktestController::class,'delete']);
 
 Route::post('mock/category/update',[MocktestController::class,'mockUpdate'])->name('update-mock');
 Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('training-calendar');
+
+Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
 

@@ -20,7 +20,7 @@
                             @foreach ($questions as $question)
                                 <tr>
                                     <td>
-                                        {{ $question->course->course_title }}
+                                        {{ $question->course->mock_category }}
                                     </td>
                                     <td>
                                         @if ($question->topic)

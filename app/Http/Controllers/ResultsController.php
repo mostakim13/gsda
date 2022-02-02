@@ -64,7 +64,15 @@ class ResultsController extends Controller
     public function show($id)
     {
         $result = Result::find($id);
-        return view('backend.quiz.results.show', compact('result'));
+        return view('frontend.quiz.results.show', compact('result'));
 
     }
+
+    public function result($id)
+    {
+        $allResults = Result::where('user_id',Auth::id())->get();
+
+        return view('frontend.quiz.results.index', compact('allResults'));
+    }
+
 }
