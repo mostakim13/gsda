@@ -36,7 +36,10 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="profile-bx text-center">
             <div class="user-profile-thumb">
-              <img src="{{ asset('images/profile/pic1.jpg')}}" alt=""/>
+
+                        <img src="{{asset(Auth::user()->image)}}" class="card-img-top" style="border-radious: 50%;" height="100%;" width="100%;" alt="Card image cap">
+
+
             </div>
             <div class="profile-info">
               <h4>{{Auth::user()->name}}</h4>
@@ -55,14 +58,13 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                 </li>
-        
-                  <li><a class="nav-link"   href="/result/index/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Quiz History</li></a>
-              <!--  <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
-                </li>-->
-              <!--  <li class="nav-item">
-                  <a class="nav-link"  href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
-                </li>-->
+
+                  <li><a class="nav-link"   href="/result/index/{{Auth::user()->id}}"><i class="fas fa-poll-h"></i>Quiz History</li></a>
+
+                <li>
+                    <a href="{{ route('change-image') }}" class="nav-link"><i class="fas fa-pen-alt"></i> Update Image </a>
+                </li>
+
                 <li><a class="nav-link"  href="/user_profile/{{Auth::user()->id}}"> <i class="ti-pencil-alt"></i>Edit Profile</li></a>
 
                 <li class="nav-item">
@@ -111,37 +113,7 @@
                   </div>
                 </div>
               </div>
-            <!--<div class="tab-pane" id="quiz-results">
-                <div class="profile-head">
-                  <h3>Quiz Results</h3>
-                </div>
-                <div class="courses-filter">
-                  <div class="row">
-                    <div class="col-md-6 col-lg-6">
-                      <ul class="course-features">
-                        <li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">8</span></li>
-                        <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span class="value">1</span></li>
-                        <li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">60 hours</span></li>
-                        <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                        <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
-                        <li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">32</span></li>
-                        <li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                      <ul class="course-features">
-                        <li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">8</span></li>
-                        <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span class="value">1</span></li>
-                        <li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">60 hours</span></li>
-                        <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                        <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
-                        <li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">32</span></li>
-                        <li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>-->
+
               <div class="tab-pane" id="edit-profile">
                 <div class="profile-head">
                   <h3>Edit Profile</h3>

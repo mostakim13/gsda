@@ -486,3 +486,8 @@ Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('train
 
 Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
 
+
+//======================================USER PROFILE ROUTES================================
+Route::get('change/image',[UserProfileController::class,'changeImage'])->name('change-image');
+Route::post('image/store', [UserProfileController::class, 'imageStore'])->name('store-image');
+Route::post('profile/update',[UserProfileController::class,'updateProfile'])->name('update-profile');

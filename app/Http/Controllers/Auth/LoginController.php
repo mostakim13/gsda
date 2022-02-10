@@ -9,6 +9,7 @@ use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class LoginController extends Controller
 {
@@ -69,7 +70,11 @@ class LoginController extends Controller
 
         }else
         {
-          return redirect()->route('login')->with('error','Invalid credentials');
+            $notification=array(
+                'message'=>'Email and Password did not match!',
+                'alert-type' =>'error'
+            );
+          return redirect()->route('login')->with($notification);
         }
 
     }

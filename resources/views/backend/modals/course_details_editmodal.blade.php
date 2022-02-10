@@ -36,12 +36,19 @@
                 <label for="exampleFormControlFile1">Course Banner Thumbnails</label>
                   <input type="file" name="image" class="form-control-file" id="banner_image" onchange="previewImage(this)" required>
             </div>
-
+            @php
+            $courses = App\Models\CourseOverview::where('course_id',$course->id)->first();
+        @endphp
+{{ dd($course->id) }}
             <div class="form-group">
               <label for="custom select">Certification</label>
               <select class="form-control" name="certification" required>
                 <option label="Choose"></option>
 
+                @foreach ($courses as $cat)
+{{ dd($cat->id) }}
+                <option value="{{ $cat->id }}" {{ $course->id == $cat->category_id? 'selected':'' }}>{{ ucwords($cat->certification) }}</option>
+                @endforeach
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
 

@@ -70,12 +70,11 @@
           @csrf
           <div class="row placeani">
             <div class="col-lg-12">
+
               <div class="form-group">
                 <div class="input-group">
                   <label for="email">Email</label>
                   <input id="email" type="email" required="" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-
                   @error('email')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

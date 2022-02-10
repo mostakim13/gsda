@@ -136,10 +136,18 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 m-b30">
-              <button name="submit" type="submit" value="Submit" class="btn button-md">Sign Up</button>
+            <div style="margin-bottom: 20px;">
+                <input type="checkbox"  id="checkme" style="margin-right: 15px;">
+                <label style="margin-bottom: 10px;" for="vehicle1">I agree with terms and conditions</label><br>
+
             </div>
-            
+            <div class="col-lg-12 m-b30">
+              <button name="submit" type="submit" id="sendNewSms" disabled="disabled" value="Submit" class="btn button-md">Sign Up</button>
+            </div>
+
+
+
+
           </div>
         </form>
       </div>
@@ -147,7 +155,19 @@
 	</div>
 </div>
 
+<script>
+ var checker = document.getElementById('checkme');
+ var sendbtn = document.getElementById('sendNewSms');
+ // when unchecked or checked, run the function
+ checker.onchange = function(){
+if(this.checked){
+    sendbtn.disabled = false;
+} else {
+    sendbtn.disabled = true;
+}
 
+}
+</script>
 
 
 

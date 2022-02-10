@@ -175,7 +175,7 @@ class CourseController extends Controller
 
     $course_categories= CourseCategory::all();
     $main_categories= MainCategory::all();
-    $course = Course::find($id);
+    $course = Course::findOrFail($id);
     $section= Section::where('course_id',$id)->first();
 
     $course_details= CourseOverview::where('course_id',$id)->get();
@@ -566,10 +566,11 @@ class CourseController extends Controller
       //$classroom_course = ClassroomCourse::find($id);
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
-      $course = Course::find($id);
+      $course = Course::findOrFail($id);
       $section= Section::where('course_id',$id)->first();
 
-      $course_details= CourseOverview::where('course_id',$id)->first();
+    //   $course_details = CourseOverview::where('course_id',$id)->first();
+      $course_details = CourseOverview::orderBy('certification','ASC')->get();
       $sections= Section::where('course_id',$id)->get();
 
       $lessons= Lesson::where('course_id',$id)->get();

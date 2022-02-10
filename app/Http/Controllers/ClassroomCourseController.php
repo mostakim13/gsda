@@ -17,7 +17,7 @@ class ClassroomCourseController extends Controller
       $classroom_courses= ClassroomCourse::all();
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
-    
+
 
 
 
@@ -61,7 +61,7 @@ class ClassroomCourseController extends Controller
       $classroom_course->classroom_course_title=$classroom_course_title;
 
       $classroom_course->classroom_slug=$classroom_slug;
-   
+
 
 
       $classroom_course->training_fee=$training_fee;
