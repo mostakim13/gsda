@@ -74,7 +74,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[10,10,10,10]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
+            style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal; margin-top: 15px;">
               Welcome To Global Skills Development Agency
 
           </div>
@@ -101,7 +101,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400;">
+            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400; margin-top: 15px;">
               Learn on your Schedule
           </div>
 
@@ -204,7 +204,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[10,10,10,10]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
+            style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal; margin-top: 15px;">
             Welcome To Global Skills Development Agency
           </div>
 
@@ -227,7 +227,7 @@
             data-paddingright="[0,0,0,0]"
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
-            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400;">
+            style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:15px; font-weight:400; margin-top: 15px;">
               Learn on your Schedule
           </div>
 

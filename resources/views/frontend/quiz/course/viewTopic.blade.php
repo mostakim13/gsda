@@ -1,8 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-
-
     <div class="page-content bg-white">
 
         <!-- inner page banner -->
@@ -29,22 +27,18 @@
 
                     <h3 class="page-title">Topics</h3>
                     <div class="row">
+                        @foreach ($topics as $topic)
 
-                        @foreach($topics as $topic)
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $topic->title }}</h5>
-                                    <h6 class="card-title">Time: {{$topic->timer}} minutes</h6>
-                                    <a href="{{ url('topic/questions/view/'.$topic->id) }}" class="inline_block btn btn-primary">Go
-                                        To Quiz</a>
+                                <div class="card m-1" style="background-color: #163B4A; border-radius: 10px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #fff">{{ $topic->title }}</h5>
+                                        <h6 class="card-title" style="color: #fff">Time: {{ $topic->timer }} minutes</h6>
+                                        <a href="{{ url('topic/questions/view/' . $topic->id) }}"
+                                            class="inline_block btn btn-primary">Go
+                                            To Quiz</a>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-
-
-
-                          @endforeach
+                        @endforeach
 
 
 
@@ -57,4 +51,3 @@
 
     </div>
 @endsection
-

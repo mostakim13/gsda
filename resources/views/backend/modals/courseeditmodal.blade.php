@@ -18,6 +18,11 @@
 
             </div>
             <div class="form-group">
+                <label for="categorytitle">Accredation Name (If Exists)</label>
+                <input type="text" class="form-control" name="accredation_name" value="{{$row->accredation_name}}"aria-describedby="categorytitle" placeholder="Enter title">
+
+              </div>
+            <div class="form-group">
                 <label for="exampleFormControlFile1">Course Thumbnails</label>
                   <input type="file" name="image" class="form-control-file" id="course_image" onchange="previewImage(this)">
             </div>

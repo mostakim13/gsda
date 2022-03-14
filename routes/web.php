@@ -55,6 +55,7 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\TimerController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TopReportController;
+use App\Http\Controllers\InstructorController;
 
 use App\Models\Answer;
 use App\Models\Question;
@@ -397,8 +398,11 @@ Route::get('/question/delete/{question_id}', [QuestionController::class, 'destro
 Route::get('/admin/coupon', [CouponController::class, 'create'])->name('coupon')->middleware('is_admin');
 
 Route::post('/admin/coupon/store', [CouponController::class, 'store'])->name('coupon-store')->middleware('is_admin');
+Route::post('/admin/coupon/update', [CouponController::class, 'update'])->name('coupon-update')->middleware('is_admin');
 
 Route::get('/admin/coupon/delete/{coupon_id}', [CouponController::class, 'destroy'])->middleware('is_admin');
+Route::get('admin/coupon-active/{id}', [CouponController::class, 'inactive'])->middleware('is_admin');
+Route::get('admin/coupon-inactive/{id}', [CouponController::class, 'active'])->middleware('is_admin');
 
 Route::post('/coupon-apply', [CartController::class, 'couponApply'])->name('coupons');
 
@@ -462,7 +466,8 @@ Route::post('result/update', [ResultController::class,'update'])->name('results.
 Route::get('result/index/{id}',[ResultsController::class,'result'])->name('result-index');
 
 
-Route::get('admin/question/index',[QuestionController::class,'index'])->name('questions-index');
+Route::get('question/topic', [QuestionController::class,'questionTopic'])->name('question-topic');
+Route::get('admin/question/index/{id}',[QuestionController::class,'index'])->name('questions-index');
 Route::get('question/edit/{id}',[QuestionController::class,'edit'])->name('questions-edit');
 Route::get('question/show/{id}',[QuestionController::class,'show'])->name('questions-show');
 Route::post('admin/question/store',[QuestionController::class,'store'])->name('questions-store');
@@ -487,7 +492,37 @@ Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('train
 Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
 
 
+
+
 //======================================USER PROFILE ROUTES================================
 Route::get('change/image',[UserProfileController::class,'changeImage'])->name('change-image');
 Route::post('image/store', [UserProfileController::class, 'imageStore'])->name('store-image');
 Route::post('profile/update',[UserProfileController::class,'updateProfile'])->name('update-profile');
+
+
+
+Route::get('privacy',[AboutController::class,'privacy']);
+
+
+//=================================Apply Coupon==============================
+Route::post('/voucher-code',[CartController::class,'voucherCode']);
+Route::post('/voucher-calculation',[CartController::class,'voucherCalculation']);
+
+//===================================Instructor Admin Routes===================================//
+Route::get('admin/home/instructor',[InstructorController::class,'instructor'])->name('instructor')->middleware('is_admin');
+Route::get('admin/home/add/instructor',[InstructorController::class,'addInstructor'])->name('add_instructor')->middleware('is_admin');
+Route::post('admin/home/store/instructor',[InstructorController::class,'storeInstructor'])->name('store_instructor')->middleware('is_admin');
+Route::get('admin/home/edit/instructor/{id}',[InstructorController::class,'editInstructor'])->name('edit_instructor')->middleware('is_admin');
+Route::post('admin/home/update/instructor',[InstructorController::class,'updateInstructor'])->name('update_instructor')->middleware('is_admin');
+Route::get('admin/home/delete/instructor/{id}',[InstructorController::class,'delete']);
+
+
+//===================================Instructor Frontend Routes===================================//
+Route::get('home/instructor',[InstructorController::class,'index']);
+Route::post('home/store/zoom',[InstructorController::class,'storeZoom'])->name('store_zoom');
+
+//===========================zoom=========================
+Route::get('zoom',[ZoomController::class,'index']);
+Route::post('zoom/store',[ZoomController::class,'zoomStore'])->name('zoom_store');
+
+Route::get('service/page',[FrontendController::class,'service']);

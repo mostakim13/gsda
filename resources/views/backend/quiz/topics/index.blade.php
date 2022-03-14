@@ -4,14 +4,13 @@
 <div class="d-flex" id="wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mt-4">
-                <h3 class="page-title">Topics</h3>
-
+            <h3 class="page-title">Topics</h3>
+            <div class="d-flex">
                 @foreach($topics as $topic)
-                    <div class="card">
+                    <div class="card d-flex m-1" style="background-color: #163B4A; border-radius: 10px;">
                         <div class="card-body mb-2">
-                            <h5 class="card-title">{{$topic->title}}</h5>
-                            <h5 class="card-title">Time: {{$topic->timer}} minutes</h5>
+                            <h5 class="card-title" style="color: #fff">{{$topic->title}}</h5>
+                            <h5 class="card-title" style="color: #fff">Time: {{$topic->timer}} minutes</h5>
 
                             <a href="/topic/questions/view/{{ $topic->id }}" class="inline_block btn btn-primary">Go
                                 To Quiz</a>

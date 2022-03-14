@@ -43,7 +43,7 @@
                         <li class=""><a href="{{ route('topics-show') }}"
                                 class="list-group-item list-group-item-action bg-light">Topics</a>
                         </li>
-                        <li class=""><a href="{{ route('questions-index') }}"
+                        <li class=""><a href="{{ url('question/topic') }}"
                                 class="list-group-item list-group-item-action bg-light">Questions</a>
                         </li>
                         <li class=""> <a href="{{ route('questionsOptions-index') }}"
@@ -109,6 +109,12 @@
                     <a href="{{ route('coupon') }}" class="ttr-material-button">
                         <span class="ttr-icon"><i class="fab fa-cc-diners-club"></i></span>
                         <span class="ttr-label">Coupon</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('instructor') }}" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="fab fa-cc-diners-club"></i></span>
+                        <span class="ttr-label">Instractor</span>
                     </a>
                 </li>
                 <li>

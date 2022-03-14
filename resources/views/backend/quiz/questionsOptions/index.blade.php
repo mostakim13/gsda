@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12 mt-4">
                     <h3 class="page-title">All Options</h3>
-                    <table class="table table-bordered table-striped datatable">
+                    <table id="question" class="table table-bordered table-striped datatable">
                         <thead>
                             <tr>
                                 <th>Question</th>
@@ -48,4 +48,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+          $('#question').DataTable();
+          } );
+      </script>
 @endsection

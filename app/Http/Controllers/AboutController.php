@@ -16,4 +16,7 @@ class AboutController extends Controller
   {
     return view('certificate');
   }
+  public function privacy(){
+      return view('frontend.pages.privacyPolicy');
+  }
 }

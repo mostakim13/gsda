@@ -314,7 +314,7 @@
 	-moz-transition:all 0.5s;
 	-webkit-transition:all 0.5s;
 	-o-transition:all 0.5s;
-	padding-right:20px;
+	padding-right:0px;
 }
 .menu-logo > a{
     display: table-cell;
@@ -342,7 +342,7 @@
 @media only screen and (max-width: 767px) {
     .menu-logo,
 	.is-fixed .menu-logo{
-        width: 100px;
+        width: 50px;
 		max-width: 100px;
 		height:50px;
     }

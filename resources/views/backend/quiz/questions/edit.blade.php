@@ -22,6 +22,7 @@
 
                         <div class="row">
                             <input type="hidden" name="id" value="{{ $question->id }}">
+                            <input type="hidden" name="topicID" value="{{ $question->topic->id }}">
                             <div class="form-group">
                                 <label class="form-control-label">Select Course:</label>
                                 <select class="form-control select2-show-search" data-placeholder="Select one"

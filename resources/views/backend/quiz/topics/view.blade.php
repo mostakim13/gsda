@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,20 @@
     @include('frontend.partials.styles')
     <title>Document</title>
 </head>
+
 <body>
-    <div class="breadcrumb-row">
-        <div class="container">
-            <ul class="list-inline">
-                <li><a href="#">Home</a></li>
-                <li>Mock Details</li>
-                <li>Topics</li>
-                <li>Questions</li>
-            </ul>
-        </div>
-    </div>
+
     <style>
         .fixme {
-            background: #3d0896;
-            color: white;
+
+
             text-align: center;
             width: 100%;
             padding: 10px 0;
         }
 
     </style>
-    <div class="container">
+    <div class="container-fluid">
         @if ($topic)
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -42,15 +35,14 @@
             <div class="row card">
                 <div class="col-md-12">
                     <div class="content"></div>
-                    <div class="time fixme" id="navbar" style="text-align: right; font-size:20px; font-weight:700; padding-right:10px;
-                                                                 background-color:darkcyan;
-                                                                ">Time Left :<span id="timer"></span></div>
-                    <h1>{{ $topic->title }}</h1>
+                    <div class="time fixme" id="navbar"  name="timer" style="text-align: right; font-size:20px; font-weight:700; padding-right:10px;;">Time Left :<span id="timer"></span></div>
+                    <h1 class="text-center">{{ $topic->title }}</h1>
                     <form action="{{ route('results.store') }}" method="post" id="form">
                         @csrf
-                        <div>
+
+                        <div class="container">
                             <input type="hidden" name="topic_id" value="{{ $topic->id }}">
-                            @foreach ($topic->questions as $question)
+                            @foreach ($questions as $question)
                                 <div>
                                     <div style="font-size: 24px; font-weight:700; background-color:maroon;">
                                         <div style="margin-left: 20px; color:#fff;">
@@ -60,7 +52,8 @@
                                     <input type="hidden" name="question_id[]" value="{{ $question->id }}">
                                     @foreach ($question->options as $option)
                                         <div style="margin-left:40px; font-size:20px;">
-                                            <input type="checkbox" name="option[{{ $question->id }}][{{ $option->id }}]"
+                                            <input type="checkbox"
+                                                name="option[{{ $question->id }}][{{ $option->id }}]"
                                                 value="{{ $option->correct }}">
                                             {{ $option->option }}
                                         </div>
@@ -69,23 +62,18 @@
                             @endforeach
 
                         </div>
+                        <div class="d-flex justify-content-center">
+                            {!! $questions->links() !!}
+                        </div>
                         <a href="{{ route('results.show', $topic->id) }}"><input type="submit" value="Submit"
                                 class="btn btn-success mt-3"></a>
-
                     </form>
-
-
                 </div>
-
             </div>
         @else
             <h1>No Topic</h1>
         @endif
-
-
     </div>
-
-
     <?php
     $con = mysqli_connect('localhost', 'root', '', 'gsda');
 
@@ -97,7 +85,7 @@
     $fetchtime = "SELECT `timer` FROM `topics` WHERE id = '$id'";
     $fetched = mysqli_query($con, $fetchtime);
     $time = mysqli_fetch_array($fetched, MYSQLI_ASSOC);
-    $settime = $time['timer'];
+    $settime = session()->put('time'=> ['timer']);
     ?>
 
 
@@ -175,8 +163,9 @@
     @include('frontend.partials.scripts')
     <!-- contact area END -->
 
-</div>
+    </div>
 
 
 </body>
+
 </html>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use PDF;
 use App\Models\Evolution;
+use App\Models\Instructor;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,8 +20,9 @@ class UserProfileController extends Controller
 
         if (Auth::check()) {
             $users = User::with('user_enrollments')->where('id', Auth::id())->first();
+            $instructor = Instructor::where('user_id',Auth::user()->id)->first();
             //dd($users);
-            return view('frontend.pages.user_profile', compact('users'));
+            return view('frontend.pages.user_profile', compact('users','instructor'));
         } else {
             return Redirect('login');
         }

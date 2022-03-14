@@ -74,10 +74,11 @@ class PortwalletController extends Controller
     }
 
     public function index(Request $request){
+        dd($request);
 
         if(Session::has('coupon'))
         {
-            $amount=Session::get('coupon')['total_amount'];
+            $amount=Session::get('coupon')['totalAmount'];
         }
         else{
             $amount=round($request->amount);
@@ -131,7 +132,7 @@ class PortwalletController extends Controller
       //  dd($request->amount);
 
        $data = array(
-           
+
            'order' => array(
              //'amount' => 1,
               'amount' => round($amount),

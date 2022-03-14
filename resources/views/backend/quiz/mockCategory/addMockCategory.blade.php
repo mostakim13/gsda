@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="classroom_course_title">Discount Price</label>
-                        <input type="text" class="form-control" name="discount_price"
+                        <input data-validation="required" type="text" class="form-control" name="discount_price"
                             aria-describedby="discount_price" placeholder="Enter discount price">
                     </div>
                     <div class="form-group">

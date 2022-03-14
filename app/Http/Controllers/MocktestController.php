@@ -19,19 +19,24 @@ class MocktestController extends Controller
 
     public function addMock(Request $request)
     {
+        $request->validate([
+            'mock_category' => 'required',
+            'regular_price' => 'required',
+            'discount_price' => 'required',
+            'description' => 'required',
+            'exam_format' => 'required',
+            'image' => 'required',
+        ], [
+            'mock_category.required' => 'Please input mocktest category.',
+            'regular_price.required' => 'Please input regular price.',
+        ]);
 
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(917, 1000)->save('storage/uploads/mocktest/' . $name_gen);
         $save_url = 'storage/uploads/mocktest/' . $name_gen;
 
-        $request->validate([
-            'mock_category' => 'required',
-            'regular_price' => 'required',
-        ], [
-            'mock_category.required' => 'Please input mocktest category.',
-            'regular_price.required' => 'Please input regular price.',
-        ]);
+
         mockTestCategory::insert([
             'image' => $save_url,
             'mock_category' => $request->mock_category,
@@ -63,9 +68,9 @@ class MocktestController extends Controller
         unlink($oldImage);
 
         $image = $request->file('image');
-        $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(917,1000)->save('storage/uploads/mocktest/'.$name_gen);
-        $save_url = 'storage/uploads/mocktest/'.$name_gen;
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(917, 1000)->save('storage/uploads/mocktest/' . $name_gen);
+        $save_url = 'storage/uploads/mocktest/' . $name_gen;
         mockTestCategory::findOrFail($id)->update([
             'image' => $save_url,
             'mock_category' => $request->mock_category,
@@ -95,7 +100,7 @@ class MocktestController extends Controller
     public function delete($mock_id)
     {
         $category = mockTestCategory::findOrFail($mock_id);
-        unlink($category->image);
+        // unlink($category->image);
         mockTestCategory::findOrFail($mock_id)->delete();
 
         $notification = array(
@@ -106,20 +111,22 @@ class MocktestController extends Controller
     }
 
     public function course_details_frontend($id)
-  {
+    {
 
-    $mocktest= mockTestCategory::findOrFail($id);
-    //dd($mocktest);
+        $mocktest = mockTestCategory::findOrFail($id);
+        //dd($mocktest);
 
-    return view('frontend/pages/course_details_index',compact('mocktest'));
-  }
+        return view('frontend/pages/course_details_index', compact('mocktest'));
+    }
 
-  public function quizView($id){
-    $topics = Topic::where('course_id',$id)->get();
+    public function quizView($id)
+    {
+        $topics = Topic::where('course_id', $id)->get();
 
 
-  // $courses = Course::findOrFail($id);
-  return view('frontend.quiz.course.viewTopic',compact('topics'));
-}
+        // $courses = Course::findOrFail($id);
+        return view('frontend.quiz.course.viewTopic', compact('topics'));
+    }
 
+    
 }

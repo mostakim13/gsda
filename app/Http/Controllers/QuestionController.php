@@ -11,14 +11,27 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    public function index()
+    public function questionTopic()
     {
-        $questions = Question::all();
+        $topics = Topic::all();
+        return view('backend.quiz.questions.questionTopic',compact('topics'));
+    }
+    public function index($id)
+    {
+
+        $questions = Question::where('topic_id',$id)->get();
         return view('backend.quiz.questions.index',compact('questions'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'topic_id' => 'required',
+            'course_id' => 'required',
+            'question' => 'required',
+            'correct' => 'required',
+
+        ]);
         $topicID = $request->input('topic_id');
         $courseID = $request->input('course_id');
         $questionText = $request->input('question');
@@ -61,7 +74,7 @@ class QuestionController extends Controller
 
     public function edit($id)
     {
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
         $topics = Topic::all();
         return view('backend.quiz.questions.edit', compact('question','topics'));
 
@@ -69,6 +82,7 @@ class QuestionController extends Controller
 
 
     public function update(Request $request){
+        $topic = $request->topicID;
         $question_id = $request->id;
         Question::findOrFail($question_id)->Update([
 
@@ -79,7 +93,7 @@ class QuestionController extends Controller
             'message'=>'Question Update Success',
             'alert-type' =>'success'
         );
-        return Redirect()->route('questions-index')->with($notification);
+        return Redirect()->route('questions-index',  $topic)->with($notification);
     }
 
     public function questionDelete($id){
