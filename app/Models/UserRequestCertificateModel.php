@@ -10,13 +10,13 @@ use App\Models\ClassroomTrainer;
 class UserRequestCertificateModel extends Model
 {
     use HasFactory;
-  protected $guarded =[];
+    protected $guarded = [];
     public function classroom_course()
     {
-        return $this->belongsTo(ClassroomCourse::class,'classroom_course_id');
+        return $this->belongsTo(ClassroomCourse::class, 'classroom_course_id');
     }
     public function trainer()
     {
-      return $this->belongsTo(ClassroomTrainer::class,'trainer_id');
+        return $this->belongsTo(ClassroomTrainer::class, 'trainer_id');
     }
 }

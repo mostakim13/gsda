@@ -11,8 +11,12 @@ use App\Models\ClassroomInfo;
 use App\Models\User;
 use App\Models\CourseReview;
 use App\Models\ClassroomTrainer;
+use App\Models\Evolution;
 use App\Models\Question;
 use App\Models\Topic;
+use App\Models\UserRequestCertificateModel;
+use alert;
+use Illuminate\Support\Facades\Redirect;
 
 class FrontendController extends Controller
 {
@@ -92,5 +96,31 @@ class FrontendController extends Controller
     public function service()
     {
         return view('frontend.pages.servicePage');
+    }
+    public function certificateVerification()
+    {
+        $classroomCertificateNo = [];
+        $elearningCertificateNo = [];
+
+        return view('frontend.partials.certificateVerify', compact('classroomCertificateNo', 'elearningCertificateNo'));
+    }
+    public function certificateSearch(Request $request)
+    {
+        $request->validate([
+            'certificateNo' => 'required|min:8'
+        ]);
+        $verify = $request->certificateNo;
+        $classroomCertificateNo = UserRequestCertificateModel::where('certificate_no', $request->certificateNo)->first();
+        $elearningCertificateNo = Evolution::where('certificate_no', $request->certificateNo)->first();
+        if (isset($classroomCertificateNo) || isset($elearningCertificateNo)) {
+
+            $notification = array(
+                'message' => 'Your Certificate Found',
+                'alert-type' => 'success'
+            );
+            return view('frontend.partials.detailsCertificateVerify', compact('classroomCertificateNo', 'elearningCertificateNo'));
+        } else {
+            return view('frontend.partials.detailsCertificateVerify');
+        }
     }
 }

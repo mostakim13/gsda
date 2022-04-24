@@ -59,14 +59,13 @@ class LoginController extends Controller
 
                 return redirect()->route('carts');
             }
-          if(auth()->user()->is_admin==1)
-          {
-             return redirect()->route('admin.home');
-          }else {
+            elseif(auth()->user()->is_admin==1)
             {
-              return redirect()->route('home');
+                return redirect()->route('admin.home');
             }
-          }
+            else {
+                return redirect()->route('home');
+            }
 
         }else
         {

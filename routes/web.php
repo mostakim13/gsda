@@ -60,6 +60,7 @@ use App\Http\Controllers\InstructorController;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Topic;
+use App\Models\UserOption;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -430,7 +431,7 @@ Route::get('category', [CategoryController::class, 'index'])->name('category');
 Route::post('category/store', [CategoryController::class, 'categoryStore'])->name('category-store');
 Route::get('/category-edit/{cat_id}', [CategoryController::class, 'edit']);
 Route::post('category/update', [CategoryController::class, 'categoryUpdate'])->name('update-category');
-Route::get('/category-delete/{cat_id}',[CategoryController::class,'delete']);
+Route::get('/category-delete/{cat_id}', [CategoryController::class, 'delete']);
 
 
 
@@ -444,50 +445,50 @@ Route::get('/category-delete/{cat_id}',[CategoryController::class,'delete']);
 
 //////////////////////=====================Quiz Route====================////////////////////////////
 
-Route::get('mocktest/topics/view/{id}', [MocktestController::class,'quizView'])->name('course-view');
+Route::get('mocktest/topics/view/{id}', [MocktestController::class, 'quizView'])->name('course-view');
 
 Route::get('/admin/subcategory/ajax/{cat_id}', [TopicController::class, 'getSubCat']);
 
-Route::get('admin/topic/create', [TopicController::class,'create'])->name('admin-topic');
-Route::post('admin/topic/store', [TopicController::class,'store'])->name('topics-store');
-Route::get('admin/topic/show', [TopicController::class,'index'])->name('topics-show');
-Route::get('admin/topic/edit/{id}', [TopicController::class,'edit'])->name('topics-edit');
-Route::post('admin/topic/update', [TopicController::class,'update'])->name('topics-update');
-Route::get('admin/topic-delete/{id}',[TopicController::class,'delete']);
+Route::get('admin/topic/create', [TopicController::class, 'create'])->name('admin-topic');
+Route::post('admin/topic/store', [TopicController::class, 'store'])->name('topics-store');
+Route::get('admin/topic/show', [TopicController::class, 'index'])->name('topics-show');
+Route::get('admin/topic/edit/{id}', [TopicController::class, 'edit'])->name('topics-edit');
+Route::post('admin/topic/update', [TopicController::class, 'update'])->name('topics-update');
+Route::get('admin/topic-delete/{id}', [TopicController::class, 'delete']);
 
-Route::get('topic/questions/view/{id}', [TopicController::class,'view'])->name('topics-view');
-
-
-Route::get('result/index',[ResultsController::class,'index'])->name('results.index');
-Route::get('result/edit/{id}',[ResultsController::class,'edit'])->name('results.edit');
-Route::get('result/show/{id}',[ResultsController::class,'show'])->name('results.show');
-Route::post('result/store',[ResultsController::class,'store'])->name('results.store');
-Route::post('result/update', [ResultController::class,'update'])->name('results.update');
-Route::get('result/index/{id}',[ResultsController::class,'result'])->name('result-index');
+Route::get('topic/questions/view/{id}', [TopicController::class, 'view'])->name('topics-view');
 
 
-Route::get('question/topic', [QuestionController::class,'questionTopic'])->name('question-topic');
-Route::get('admin/question/index/{id}',[QuestionController::class,'index'])->name('questions-index');
-Route::get('question/edit/{id}',[QuestionController::class,'edit'])->name('questions-edit');
-Route::get('question/show/{id}',[QuestionController::class,'show'])->name('questions-show');
-Route::post('admin/question/store',[QuestionController::class,'store'])->name('questions-store');
-Route::post('question/update', [QuestionController::class,'update'])->name('questions-update');
-Route::get('/question-delete/{id}',[QuestionController::class,'questionDelete']);
+Route::get('result/index', [ResultsController::class, 'index'])->name('results.index');
+Route::get('result/edit/{id}', [ResultsController::class, 'edit'])->name('results.edit');
+Route::get('result/show/{id}', [ResultsController::class, 'show'])->name('results.show');
+Route::post('result/store', [ResultsController::class, 'store'])->name('results.store');
+Route::post('result/update', [ResultController::class, 'update'])->name('results.update');
+Route::get('result/index/{id}', [ResultsController::class, 'result'])->name('result-index');
 
-Route::get('admin/QuestionsOptions/index',[QuestionsOptionsController::class,'index'])->name('questionsOptions-index');
-Route::get('admin/QuestionsOptions/edit/{id}',[QuestionsOptionsController::class,'edit'])->name('questionsOptions-edit');
-Route::post('admin/QuestionsOptions/store',[QuestionsOptionsController::class,'store'])->name('questionsOptions-store');
-Route::post('admin/QuestionsOptions/update/{id}',[QuestionsOptionsController::class,'update'])->name('questionsOptions-update');
-Route::get('admin/QuestionsOptions/show',[QuestionsOptionsController::class,'show'])->name('questionsOptions-show');
-Route::get('/QuestionsOptions-delete/{id}',[QuestionsOptionsController::class,'optionDelete']);
 
-Route::get('mock/category',[MocktestController::class,'mockCategory'])->name('mock-category');
-Route::get('view/category',[MocktestController::class,'viewCategory'])->name('view-category');
-Route::post('mock/category/store',[MocktestController::class,'addMock'])->name('add-mock');
-Route::get('/mock-delete/{mock_id}',[MocktestController::class,'delete']);
+Route::get('question/topic', [QuestionController::class, 'questionTopic'])->name('question-topic');
+Route::get('admin/question/index/{id}', [QuestionController::class, 'index'])->name('questions-index');
+Route::get('question/edit/{id}', [QuestionController::class, 'edit'])->name('questions-edit');
+Route::get('question/show/{id}', [QuestionController::class, 'show'])->name('questions-show');
+Route::post('admin/question/store', [QuestionController::class, 'store'])->name('questions-store');
+Route::post('question/update', [QuestionController::class, 'update'])->name('questions-update');
+Route::get('/question-delete/{id}', [QuestionController::class, 'questionDelete']);
 
-Route::post('mock/category/update',[MocktestController::class,'mockUpdate'])->name('update-mock');
-Route::get('admin/calendar',[FrontendController::class,'calendar'])->name('training-calendar');
+Route::get('admin/QuestionsOptions/index', [QuestionsOptionsController::class, 'index'])->name('questionsOptions-index');
+Route::get('admin/QuestionsOptions/edit/{id}', [QuestionsOptionsController::class, 'edit'])->name('questionsOptions-edit');
+Route::post('admin/QuestionsOptions/store', [QuestionsOptionsController::class, 'store'])->name('questionsOptions-store');
+Route::post('admin/QuestionsOptions/update/{id}', [QuestionsOptionsController::class, 'update'])->name('questionsOptions-update');
+Route::get('admin/QuestionsOptions/show', [QuestionsOptionsController::class, 'show'])->name('questionsOptions-show');
+Route::get('/QuestionsOptions-delete/{id}', [QuestionsOptionsController::class, 'optionDelete']);
+
+Route::get('mock/category', [MocktestController::class, 'mockCategory'])->name('mock-category');
+Route::get('view/category', [MocktestController::class, 'viewCategory'])->name('view-category');
+Route::post('mock/category/store', [MocktestController::class, 'addMock'])->name('add-mock');
+Route::get('/mock-delete/{mock_id}', [MocktestController::class, 'delete']);
+
+Route::post('mock/category/update', [MocktestController::class, 'mockUpdate'])->name('update-mock');
+Route::get('admin/calendar', [FrontendController::class, 'calendar'])->name('training-calendar');
 
 Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details_frontend'])->name('mock-details');
 
@@ -495,34 +496,37 @@ Route::get('home/mock_details/{id}', [MocktestController::class, 'course_details
 
 
 //======================================USER PROFILE ROUTES================================
-Route::get('change/image',[UserProfileController::class,'changeImage'])->name('change-image');
+Route::get('change/image', [UserProfileController::class, 'changeImage'])->name('change-image');
 Route::post('image/store', [UserProfileController::class, 'imageStore'])->name('store-image');
-Route::post('profile/update',[UserProfileController::class,'updateProfile'])->name('update-profile');
+Route::post('profile/update', [UserProfileController::class, 'updateProfile'])->name('update-profile');
 
 
 
-Route::get('privacy',[AboutController::class,'privacy']);
+Route::get('privacy', [AboutController::class, 'privacy']);
 
 
 //=================================Apply Coupon==============================
-Route::post('/voucher-code',[CartController::class,'voucherCode']);
-Route::post('/voucher-calculation',[CartController::class,'voucherCalculation']);
+Route::post('/voucher-code', [CartController::class, 'voucherCode']);
+Route::post('/voucher-calculation', [CartController::class, 'voucherCalculation']);
 
 //===================================Instructor Admin Routes===================================//
-Route::get('admin/home/instructor',[InstructorController::class,'instructor'])->name('instructor')->middleware('is_admin');
-Route::get('admin/home/add/instructor',[InstructorController::class,'addInstructor'])->name('add_instructor')->middleware('is_admin');
-Route::post('admin/home/store/instructor',[InstructorController::class,'storeInstructor'])->name('store_instructor')->middleware('is_admin');
-Route::get('admin/home/edit/instructor/{id}',[InstructorController::class,'editInstructor'])->name('edit_instructor')->middleware('is_admin');
-Route::post('admin/home/update/instructor',[InstructorController::class,'updateInstructor'])->name('update_instructor')->middleware('is_admin');
-Route::get('admin/home/delete/instructor/{id}',[InstructorController::class,'delete']);
+Route::get('admin/home/instructor', [InstructorController::class, 'instructor'])->name('instructor')->middleware('is_admin');
+Route::get('admin/home/add/instructor', [InstructorController::class, 'addInstructor'])->name('add_instructor')->middleware('is_admin');
+Route::post('admin/home/store/instructor', [InstructorController::class, 'storeInstructor'])->name('store_instructor')->middleware('is_admin');
+Route::get('admin/home/edit/instructor/{id}', [InstructorController::class, 'editInstructor'])->name('edit_instructor')->middleware('is_admin');
+Route::post('admin/home/update/instructor', [InstructorController::class, 'updateInstructor'])->name('update_instructor')->middleware('is_admin');
+Route::get('admin/home/delete/instructor/{id}', [InstructorController::class, 'delete']);
 
 
 //===================================Instructor Frontend Routes===================================//
-Route::get('home/instructor',[InstructorController::class,'index']);
-Route::post('home/store/zoom',[InstructorController::class,'storeZoom'])->name('store_zoom');
+Route::get('home/instructor', [InstructorController::class, 'index']);
+Route::post('home/store/zoom', [InstructorController::class, 'storeZoom'])->name('store_zoom');
 
 //===========================zoom=========================
-Route::get('zoom',[ZoomController::class,'index']);
-Route::post('zoom/store',[ZoomController::class,'zoomStore'])->name('zoom_store');
+Route::get('zoom', [ZoomController::class, 'index']);
+Route::post('zoom/store', [ZoomController::class, 'zoomStore'])->name('zoom_store');
 
-Route::get('service/page',[FrontendController::class,'service']);
+Route::get('service/page', [FrontendController::class, 'service']);
+Route::get('certificate-verify', [FrontendController::class, 'certificateVerification'])->name('certificate-verification');
+Route::post('certificate-search', [FrontendController::class, 'certificateSearch'])->name('certificate-searching');
+// Route::get('certificate/verify', [UserRequestCertificateController::class, 'certificateVerification'])->name('certificate-verify');

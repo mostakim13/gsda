@@ -35,7 +35,9 @@
             <div class="row card">
                 <div class="col-md-12">
                     <div class="content"></div>
-                    <div class="time fixme" id="navbar"  name="timer" style="text-align: right; font-size:20px; font-weight:700; padding-right:10px;;">Time Left :<span id="timer"></span></div>
+                    <div class="time fixme" id="navbar" name="timer"
+                        style="text-align: right; font-size:20px; font-weight:700; padding-right:10px;;">Time Left
+                        :<span id="timer"></span></div>
                     <h1 class="text-center">{{ $topic->title }}</h1>
                     <form action="{{ route('results.store') }}" method="post" id="form">
                         @csrf
