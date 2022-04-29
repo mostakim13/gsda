@@ -26,8 +26,6 @@ class UserEnrollmentController extends Controller
     public function index($id, $slug)
 
     {
-
-
         $user_enrollment = UserEnrollment::where('course_id', $id)->where('user_id', Auth::id())->get();
         //dd($user_enrollment);
         //dd(count($user_enrollment));

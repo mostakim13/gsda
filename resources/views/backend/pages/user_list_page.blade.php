@@ -28,26 +28,23 @@
 
                     <div class="table table-responsive">
                         <table id="user_list" class="table table-bordered">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
-                                    <th class="wd-10p">Id</th>
-                                    <th class="wd-10p">User Name</th>
-
-                                    <th class="wd-10p">Email</th>
-                                    <th class="wd-10p">Phone Number</th>
-                                    <th class="wd-10p">Role</th>
-                                    <th class="wd-5p">Enrollment</th>
-                                    <th class="wd-5p">Created At</th>
-                                    <th class="wd-10p">Actions</th>
+                                    <th>Id</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Enrollment Courses</th>
+                                    <th>Course with Date</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 @foreach ($users as $row)
                                     <tr>
                                         <td>{{ $row->id }}</td>
                                         <td class="user_name">
                                             {{ $row->name }}
-
                                         </td>
 
                                         <td>
@@ -55,15 +52,6 @@
                                         </td>
                                         <td>
                                             0{{ $row->phone }}
-                                        </td>
-                                        <td>
-                                            @if ($row->is_admin == 1)
-                                                Admin
-                                            @else
-                                                User
-                                            @endif
-
-
                                         </td>
 
                                         <td>
@@ -74,12 +62,15 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td>{{ $row->created_at }}</td>
+                                        <td>
+                                            <a href="/admin/home/enrollment-date/{{ $row->id }}"><i
+                                                    class="fas fa-eye"></i></a>
+                                        </td>
 
                                         <td>
                                             <a href="#"><i class="fas fa-edit"></i></a>
-                                            <a id="delete" href="/admin/home/users/delete/{{ $row->id }}"><i
-                                                    class="fas fa-trash"></i></a>
+                                            {{-- <a id="delete" href="/admin/home/users/delete/{{ $row->id }}"><i
+                                                    class="fas fa-trash"></i></a> --}}
                                             <a type="button" id="{{ $row->id }}" class="addCourse"><i
                                                     class="fab fa-accessible-icon"></i></a>
 
